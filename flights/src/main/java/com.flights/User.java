@@ -1,5 +1,3 @@
-// package com.flights;
-
 public class User {
     private String firstName;
     private String lastName;
@@ -18,8 +16,7 @@ public class User {
     public void setUserTimePreference(String newPreference) {
         if (newPreference == timePreference) {
             System.out.println("Time preference is already set to " + newPreference);
-        }
-        else {
+        } else {
             this.timePreference = newPreference;
         }
     }
