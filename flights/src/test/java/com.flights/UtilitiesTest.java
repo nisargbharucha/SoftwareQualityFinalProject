@@ -12,15 +12,27 @@ import org.junit.Test;
 import com.flights.Flight;
 import com.flights.Utilities;
 
+/**
+ * This class contains unit tests for the Utilities class.
+ */
 public class UtilitiesTest {
 
     private Utilities utilities;
-
+    
+    /**
+     * Sets up the test fixture by creating an instance of the Utilities class.
+     */
     @Before
     public void setUp() {
         utilities = new Utilities();
     }
 
+    /**
+     * Test case for the getDirectFlights method.
+     * 
+     * It verifies that the getDirectFlights method returns the expected list of flights
+     * when given a departure and destination.
+     */
     @Test
     public void testGetDirectFlights() {
         // Arrange
@@ -36,6 +48,12 @@ public class UtilitiesTest {
         assertEquals(expectedFlights, actualFlights);
     }
 
+    /**
+     * Test case for the getReturnFlights method.
+     * 
+     * It verifies that the getReturnFlights method returns the expected list of flights
+     * when given a departure, destination, and date.
+     */
     @Test
     public void testGetReturnFlights() {
         // Arrange
@@ -53,6 +71,12 @@ public class UtilitiesTest {
         assertEquals(expectedFlights, actualFlights);
     }
 
+    /**
+     * Test case for the getMultistopFlights method.
+     * 
+     * It verifies that the getMultistopFlights method returns the expected list of flights
+     * when given an old destination, new destination, and departing day.
+     */
     @Test
     public void testGetMultistopFlights() {
         // Arrange
@@ -69,6 +93,12 @@ public class UtilitiesTest {
         assertEquals(expectedFlights, actualFlights);
     }
 
+    /**
+     * Test case for the sendConfirmation method.
+     * 
+     * It verifies that the sendConfirmation method calls the getFlightInformation method
+     * on the flight object.
+     */
     @Test
     public void testSendConfirmation() {
         // Arrange

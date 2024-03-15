@@ -11,6 +11,19 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
+import org.junit.jupiter.api.*;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.sql.*;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
+
+/**
+ * Unit tests for the Flight class.
+ */
 @ExtendWith(MockitoExtension.class)
 public class FlightTest {
 
@@ -23,8 +36,14 @@ public class FlightTest {
     @Mock
     private Connection connection;
 
+    /**
+     * Set up the mock objects and test data before each test.
+     *
+     * @throws SQLException if a database access error occurs
+     */
     @BeforeEach
     public void setUp() throws SQLException {
+        // Mock the behavior of the ResultSet
         when(resultSet.getString("depart_location")).thenReturn("Toronto");
         when(resultSet.getString("destination_location")).thenReturn("New York");
         when(resultSet.getString("depart_time")).thenReturn("10:00");
@@ -33,16 +52,26 @@ public class FlightTest {
         when(resultSet.getString("destination_day")).thenReturn("Monday");
         when(resultSet.getInt("num_passengers")).thenReturn(100);
 
+        // Mock the behavior of the PreparedStatement and Connection
         when(statement.executeQuery()).thenReturn(resultSet);
         when(connection.prepareStatement(any(String.class))).thenReturn(statement);
 
+        // Register the mock driver
         DriverManager.registerDriver(new MockDriver(connection));
     }
 
+    /**
+     * Nested class for testing the Flight constructor.
+     */
     @Nested
     @DisplayName("Flight Constructor Tests")
     class FlightConstructorTests {
 
+        /**
+         * Test the Flight constructor with a valid ID.
+         *
+         * @throws SQLException if a database access error occurs
+         */
         @Test
         @DisplayName("Flight constructor should initialize flight object with valid ID")
         public void testFlightConstructorWithValidID() throws SQLException {
@@ -59,6 +88,9 @@ public class FlightTest {
             assertEquals(100, flight.getNumPassengers());
         }
 
+        /**
+         * Test the Flight constructor with an invalid ID.
+         */
         @Test
         @DisplayName("Flight constructor should throw SQLException for invalid ID")
         public void testFlightConstructorWithInvalidID() {
@@ -66,6 +98,11 @@ public class FlightTest {
             assertThrows(SQLException.class, () -> new Flight(-1));
         }
 
+        /**
+         * Test the Flight constructor with an empty result set.
+         *
+         * @throws SQLException if a database access error occurs
+         */
         @Test
         @DisplayName("Flight constructor should handle empty result set")
         public void testFlightConstructorWithEmptyResultSet() throws SQLException {
@@ -76,6 +113,11 @@ public class FlightTest {
             assertDoesNotThrow(() -> new Flight(1));
         }
 
+        /**
+         * Test the Flight constructor with null values in the result set.
+         *
+         * @throws SQLException if a database access error occurs
+         */
         @Test
         @DisplayName("Flight constructor should handle null values in result set")
         public void testFlightConstructorWithNullValues() throws SQLException {
@@ -101,6 +143,11 @@ public class FlightTest {
             assertEquals(0, flight.getNumPassengers());
         }
 
+        /**
+         * Test the Flight constructor when a SQLException is thrown.
+         *
+         * @throws SQLException if a database access error occurs
+         */
         @Test
         @DisplayName("Flight constructor should handle SQLException")
         public void testFlightConstructorHandlesSQLException() throws SQLException {
@@ -112,10 +159,18 @@ public class FlightTest {
         }
     }
 
+    /**
+     * Nested class for testing the Flight toString() method.
+     */
     @Nested
     @DisplayName("Flight toString() Tests")
     class FlightToStringTests {
 
+        /**
+         * Test the Flight toString() method.
+         *
+         * @throws SQLException if a database access error occurs
+         */
         @Test
         @DisplayName("Flight toString() should return a string representation of the flight")
         public void testFlightToString() throws SQLException {
@@ -138,10 +193,18 @@ public class FlightTest {
         }
     }
 
+    /**
+     * Nested class for testing the Flight getFlightInformation() method.
+     */
     @Nested
     @DisplayName("Flight getFlightInformation() Tests")
     class FlightGetFlightInformationTests {
 
+        /**
+         * Test the Flight getFlightInformation() method.
+         *
+         * @throws SQLException if a database access error occurs
+         */
         @Test
         @DisplayName("Flight getFlightInformation() should return the flight information")
         public void testGetFlightInformation() throws SQLException {
@@ -163,6 +226,11 @@ public class FlightTest {
         }
     }
 
+    /**
+     * Test the Flight getDepartLocation() method.
+     *
+     * @throws SQLException if a database access error occurs
+     */
     @RepeatedTest(3)
     @DisplayName("Flight getDepartLocation() should return the correct departure location")
     public void testGetDepartLocation() throws SQLException {
@@ -176,6 +244,12 @@ public class FlightTest {
         assertEquals("Toronto", departLocation);
     }
 
+    /**
+     * Test the Flight getDepartTime() method with different departure times.
+     *
+     * @param departTime the departure time to test
+     * @throws SQLException if a database access error occurs
+     */
     @ParameterizedTest
     @ValueSource(strings = { "10:00", "12:00", "14:00" })
     @DisplayName("Flight getDepartTime() should return the correct departure time")
@@ -190,6 +264,11 @@ public class FlightTest {
         assertEquals(departTime, actualDepartTime);
     }
 
+    /**
+     * Test the Flight getNumPassengers() method on Windows and Linux.
+     *
+     * @throws SQLException if a database access error occurs
+     */
     @Test
     @EnabledOnOs({ OS.WINDOWS, OS.LINUX })
     @DisplayName("Flight getNumPassengers() should return the correct number of passengers on Windows and Linux")
@@ -204,6 +283,11 @@ public class FlightTest {
         assertEquals(100, numPassengers);
     }
 
+    /**
+     * Test the Flight getNumPassengers() method on macOS.
+     *
+     * @throws SQLException if a database access error occurs
+     */
     @Test
     @EnabledOnOs(OS.MAC)
     @DisplayName("Flight getNumPassengers() should return 0 on macOS")
@@ -218,6 +302,9 @@ public class FlightTest {
         assertEquals(0, numPassengers);
     }
 
+    /**
+     * Mock implementation of the Driver interface for testing purposes.
+     */
     private static class MockDriver implements Driver {
         private Connection connection;
 
