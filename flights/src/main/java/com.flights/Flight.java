@@ -74,14 +74,8 @@ public class Flight {
         return numPassengers;
     }
 
-    public void getFlightInformation() {
-        System.out.println("Depart Location: " + this.departLocation);
-        System.out.println("Destination Location: " + this.destinationLocation);
-        System.out.println("Depart Time: " + this.departTime);
-        System.out.println("Destination Time: " + this.destinationTime);
-        System.out.println("Depart Day: " + this.departDay);
-        System.out.println("Destination Day: " + this.destinationDay);
-        System.out.println("Depart Tim: " + this.departTime);
+    public Flight getFlightInformation() {
+        this.toString();
     }
 
     
