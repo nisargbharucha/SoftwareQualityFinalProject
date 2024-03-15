@@ -1,4 +1,4 @@
-package com.flights;
+package main.java.com.flights;
 
 import org.springframework.boot.SpringApplication;
 import java.time.format.DateTimeFormatter;
