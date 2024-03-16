@@ -29,4 +29,8 @@ public class Utilities {
         // will show confirmation to the user about their upcoming flight using the
         // Flight.getFlightInfromation() method
     }
+
+    public void formatTime(DateTimeFormatter time, String preference){
+        // convert the given time to something else if the preference is different to what is being done now.
+    }
 }
