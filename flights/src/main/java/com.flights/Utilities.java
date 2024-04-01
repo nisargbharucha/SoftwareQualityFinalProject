@@ -3,6 +3,7 @@ package com.flights;
 import java.util.List;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import com.flights.Flight;
 
 // CLASS FOR ALL METHODS TO USE TO GET INFORMATION FROM DATABASE
 public class Utilities {
@@ -36,6 +37,16 @@ public class Utilities {
         // Simulate a flights database (replace with actual data source)
         List<Flight> flights = new ArrayList<>();
         // ... populate flights list with sample flight data
+        // Create sample flights
+        Flight flight1 = new Flight("Departure1", "Destination1", true, LocalDateTime.now());
+        Flight flight2 = new Flight("Departure2", "Destination2", true, LocalDateTime.now());
+        Flight flight3 = new Flight("Departure3", "Destination3", true, LocalDateTime.now());
+
+        // Add flights to the flights list
+        flights.add(flight1);
+        flights.add(flight2);
+        flights.add(flight3);
+        
 
         for (Flight flight : flights) {
             if (flight.getDepartLocation().equals(destination) &&

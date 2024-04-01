@@ -43,21 +43,22 @@ public class FlightTest {
      */
     @BeforeEach
     public void setUp() throws SQLException {
-        // Mock the behavior of the ResultSet
-        when(resultSet.getString("depart_location")).thenReturn("Toronto");
-        when(resultSet.getString("destination_location")).thenReturn("New York");
-        when(resultSet.getString("depart_time")).thenReturn("10:00");
-        when(resultSet.getString("destination_time")).thenReturn("12:00");
-        when(resultSet.getString("depart_day")).thenReturn("Monday");
-        when(resultSet.getString("destination_day")).thenReturn("Monday");
-        when(resultSet.getInt("num_passengers")).thenReturn(100);
 
-        // Mock the behavior of the PreparedStatement and Connection
-        when(statement.executeQuery()).thenReturn(resultSet);
-        when(connection.prepareStatement(any(String.class))).thenReturn(statement);
+        // // Mock the behavior of the ResultSet
+        // when(resultSet.getString("depart_location")).thenReturn("Toronto");
+        // when(resultSet.getString("destination_location")).thenReturn("New York");
+        // when(resultSet.getString("depart_time")).thenReturn("10:00");
+        // when(resultSet.getString("destination_time")).thenReturn("12:00");
+        // when(resultSet.getString("depart_day")).thenReturn("Monday");
+        // when(resultSet.getString("destination_day")).thenReturn("Monday");
+        // when(resultSet.getInt("num_passengers")).thenReturn(100);
 
-        // Register the mock driver
-        DriverManager.registerDriver(new MockDriver(connection));
+        // // Mock the behavior of the PreparedStatement and Connection
+        // when(statement.executeQuery()).thenReturn(resultSet);
+        // when(connection.prepareStatement(any(String.class))).thenReturn(statement);
+
+        // // Register the mock driver
+        // DriverManager.registerDriver(new MockDriver(connection));
     }
 
     /**
