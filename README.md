@@ -1,13 +1,10 @@
-# SoftwareQualityFinalProject
+# SoftwareQualityFinalProject and Work Distribution
 
-First deliverable project report and more information in document
+| Members            | Tasks                                              | % |
+|--------------------|---------------------------------------------------|:--|
+| Nisarg Bharucha    | Making initial development plan , Creating diagrams for the class designs and data flow                   | 25 |
+| Shiv Patel         | Configuring Google Cloud and Jenkins for CI/CD      | 25 |
+| Hamzi Farhat       |                                                    | 25 |
+| Fernando Chan Qui  | Making modules and functions from the test cases in 1st report | 25 |
 
-Members:
-- Nisarg Bharucha - 100820217 - Designed Test cases and overall structure of project 
-- Shiv Patel - 100818727 - Designed Test cases and overall structure of project 
-- Fernando Chan Qui - 100844946 - Designed Test cases and overall structure of project 
-- Hamzi Farhat - 100844946 - Designed Test cases and overall structure of project 
 
-Second deliverable status: 
-- Currently working on the methods and functions for the application (Fernando and Hamzi)
-- Figuring out the design and CI/CD pipeline for the project using google cloud and Jenkins (Shiv and Nisarg)
