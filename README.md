@@ -1,6 +1,4 @@
-# SoftwareQualityFinalProject
-
-# Work Distribution
+# SoftwareQualityFinalProject and Work Distribution
 
 | Members            | Tasks                                              | % |
 |--------------------|---------------------------------------------------|:--|
