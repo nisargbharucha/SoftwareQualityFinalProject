@@ -1,4 +1,4 @@
-package test.java.com.flights;
+package test.java.flights;
 
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;

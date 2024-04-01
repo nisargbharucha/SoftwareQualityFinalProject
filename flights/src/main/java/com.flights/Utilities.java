@@ -1,9 +1,9 @@
-package com.flights;
+package flights;
 
 import java.util.List;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import com.flights.Flight;
+import flights.Flight;
 
 // CLASS FOR ALL METHODS TO USE TO GET INFORMATION FROM DATABASE
 public class Utilities {
@@ -11,13 +11,26 @@ public class Utilities {
     // public List<Flight> getDirectFlights(String departure, String destination) {
     // // will return all flights that are direct from departure to destination
     // }
+
+    public List<Flight> getAllFlights() {
+        List<Flight> flights = new ArrayList<>();
+        // Flight flight1 = new Flight(1, "Toronto", "California", "12:00", "Monday", 200);
+        // Flight flight2 = new Flight(2, "California", "London", "12:00", "Tuesday", 180);
+        // Flight flight3 = new Flight(3, "Paris", "Toronto", "12:00", "Wednesday", 150);
+
+        // // Add flights to the flights list
+        // flights.add(flight1);
+        // flights.add(flight2);
+        // flights.add(flight3);
+        // returns all flights that are available, defined here
+
+        return flights;
+    }
     public List<Flight> getDirectFlights(String departure, String destination) {
         List<Flight> directFlights = new ArrayList<>();
-
-        // Simulate a flights database (replace with actual data source)
-        List<Flight> flights = new ArrayList<>();
-        // ... populate flights list with sample flight data (including a mix of direct
-        // and connecting flights)
+        
+        List<Flight> flights = getAllFlights();
+        
 
         for (Flight flight : flights) {
             if (flight.getDepartLocation().equals(departure) &&
