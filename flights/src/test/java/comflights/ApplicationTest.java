@@ -1,8 +1,10 @@
-package test.java.com.flights;
+package comflights;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.time.format.DateTimeFormatter;
+
+import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ApplicationTest {

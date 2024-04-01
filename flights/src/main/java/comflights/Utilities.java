@@ -1,9 +1,8 @@
-package flights;
+package comflights;
 
 import java.util.List;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import flights.Flight;
 
 // CLASS FOR ALL METHODS TO USE TO GET INFORMATION FROM DATABASE
 public class Utilities {
@@ -14,9 +13,12 @@ public class Utilities {
 
     public List<Flight> getAllFlights() {
         List<Flight> flights = new ArrayList<>();
-        // Flight flight1 = new Flight(1, "Toronto", "California", "12:00", "Monday", 200);
-        // Flight flight2 = new Flight(2, "California", "London", "12:00", "Tuesday", 180);
-        // Flight flight3 = new Flight(3, "Paris", "Toronto", "12:00", "Wednesday", 150);
+        // Flight flight1 = new Flight(1, "Toronto", "California", "12:00", "Monday",
+        // 200);
+        // Flight flight2 = new Flight(2, "California", "London", "12:00", "Tuesday",
+        // 180);
+        // Flight flight3 = new Flight(3, "Paris", "Toronto", "12:00", "Wednesday",
+        // 150);
 
         // // Add flights to the flights list
         // flights.add(flight1);
@@ -26,11 +28,11 @@ public class Utilities {
 
         return flights;
     }
+
     public List<Flight> getDirectFlights(String departure, String destination) {
         List<Flight> directFlights = new ArrayList<>();
-        
+
         List<Flight> flights = getAllFlights();
-        
 
         for (Flight flight : flights) {
             if (flight.getDepartLocation().equals(departure) &&
@@ -59,12 +61,11 @@ public class Utilities {
         flights.add(flight1);
         flights.add(flight2);
         flights.add(flight3);
-        
 
         for (Flight flight : flights) {
             if (flight.getDepartLocation().equals(destination) &&
                     flight.getDestinationLocation().equals(departure) &&
-                    flight.getDepartureDay().isAfter(day)) {
+                    flight.getDepartDay().isAfter(day)) {
                 returnFlights.add(flight);
             }
         }
@@ -81,7 +82,7 @@ public class Utilities {
         for (Flight flight : flights) {
             if (flight.getDepartLocation().equals(old_destination) &&
                     flight.getDestinationLocation().equals(new_destination) &&
-                    flight.getDepartureDay().isAfter(departing_day)) {
+                    flight.getDepartDay().isAfter(departing_day)) {
                 multistopFlights.add(flight);
             }
         }
@@ -91,8 +92,8 @@ public class Utilities {
 
     // Flight.getFlightInfromation() method
     public void confirmFlight(User user, Flight flight) {
-    }        System.out.println("Flight confirmation for " + user.getName() + ":\n" + flight.getFlightInformation());
-
+        System.out.println("Flight confirmation for " + user.getName() + ":\n" + flight.getFlightInformation());
+    }
 
     public void formatTime(User user, DateTimeFormatter time, String preference) {
         // convert the given time to something else if the preference is different to

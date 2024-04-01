@@ -1,4 +1,4 @@
-package flights;
+package comflights;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

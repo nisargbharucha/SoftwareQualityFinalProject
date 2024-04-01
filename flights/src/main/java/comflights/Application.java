@@ -1,6 +1,8 @@
-package main.java.com.flights;
+package comflights;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import java.time.format.DateTimeFormatter;
 
 @SpringBootApplication
@@ -10,9 +12,9 @@ public class Application {
     }
 
     public DateTimeFormatter convertTime(DateTimeFormatter timeToChange) {
+        return timeToChange;
         // return the converted time format (12->24 or 24->12 depending on the input)
         // return DateTimeFormatter.ofPattern("HH:mm:ss");
     }
 
-    
 }

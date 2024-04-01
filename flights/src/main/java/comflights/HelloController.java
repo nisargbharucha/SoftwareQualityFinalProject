@@ -1,4 +1,4 @@
-package main.java.com.flights;
+package comflights;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

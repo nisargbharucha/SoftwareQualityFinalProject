@@ -1,4 +1,4 @@
-package flights;
+package comflights;
 
 public class User {
     private String firstName;
@@ -21,6 +21,11 @@ public class User {
         } else {
             this.timePreference = newPreference;
         }
+    }
+
+    public String getName() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getName'");
     }
 
 }
