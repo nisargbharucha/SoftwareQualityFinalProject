@@ -6,12 +6,18 @@ import java.util.ArrayList;
 import java.time.LocalDate;
 
 // CLASS FOR ALL METHODS TO USE TO GET INFORMATION FROM DATABASE
-public class Utilities {
+public class Utilities implements UtilitiesService {
+    private UtilitiesService utilitiesService;
 
     // public List<Flight> getDirectFlights(String departure, String destination) {
     // // will return all flights that are direct from departure to destination
     // }
 
+    public Utilities(UtilitiesService utilitiesService) {
+        this.utilitiesService = utilitiesService;
+    }
+
+    @Override
     public List<Flight> getAllFlights() {
         List<Flight> flights = new ArrayList<>();
         Flight flight1 = new Flight(1, "Toronto", "California", "10:00", "12:00", LocalDate.of(2024, 4, 2),
@@ -21,19 +27,24 @@ public class Utilities {
         Flight flight3 = new Flight(3, "California", "London", "10:00", "12:00", LocalDate.of(2024, 4, 1),
                 LocalDate.of(2024, 4, 4), 190);
 
+        System.out.println("FUNCTION RUNS, FLIGHTS ADDED");
+
         // // Add flights to the flights list
-        // flights.add(flight1);
-        // flights.add(flight2);
-        // flights.add(flight3);
+        flights.add(flight1);
+        flights.add(flight2);
+        flights.add(flight3);
         // returns all flights that are available, defined here
+        System.out.println(flights);
 
         return flights;
     }
 
+    @Override
     public List<Flight> getDirectFlights(String departure, String destination) {
         List<Flight> directFlights = new ArrayList<>();
 
         List<Flight> flights = getAllFlights();
+        System.out.println(flights);
 
         for (Flight flight : flights) {
             if (flight.getDepartLocation().equals(departure) && flight.getDestinationLocation().equals(destination)) {
@@ -49,6 +60,7 @@ public class Utilities {
         return directFlights;
     }
 
+    @Override
     public List<Flight> getReturnFlights(String departure, String destination, LocalDate day) {
         List<Flight> returnFlights = new ArrayList<>();
 
@@ -64,6 +76,7 @@ public class Utilities {
         return returnFlights;
     }
 
+    @Override
     public List<Flight> getMultistopFlights(String old_destination, String new_destination,
             LocalDate departing_day) {
         // this list will hold all the flights that are multistop from old_destination
@@ -86,11 +99,13 @@ public class Utilities {
         return multistopFlights;
     }
 
+    @Override
     // Flight.getFlightInfromation() method
     public void confirmFlight(User user, Flight flight) {
         System.out.println("Flight confirmation for " + user.getName() + ":\n" + flight.getFlightInformation());
     }
 
+    @Override
     public void formatTime(User user, DateTimeFormatter time, String preference) {
         // convert the given time to something else if the preference is different to
         // what is being done now.

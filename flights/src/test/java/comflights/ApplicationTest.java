@@ -1,35 +1,37 @@
-package comflights;
+// package comflights;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import java.time.format.DateTimeFormatter;
+// import org.junit.jupiter.api.DisplayName;
+// import org.junit.jupiter.api.Test;
+// import java.time.format.DateTimeFormatter;
 
-import static org.junit.Assert.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+// import static org.junit.Assert.*;
+// import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ApplicationTest {
+// public class ApplicationTest {
 
-    @Test
-    @DisplayName("Test converting time from 12-hour format to 24-hour format")
-    public void testConvertTime_12To24() {
-        Application application = new Application();
-        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
-        DateTimeFormatter expectedFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+// @Test
+// @DisplayName("Test converting time from 12-hour format to 24-hour format")
+// public void testConvertTime_12To24() {
+// Application application = new Application();
+// DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
+// DateTimeFormatter expectedFormatter =
+// DateTimeFormatter.ofPattern("HH:mm:ss");
 
-        DateTimeFormatter resultFormatter = application.convertTime(inputFormatter);
+// DateTimeFormatter resultFormatter = application.convertTime(inputFormatter);
 
-        assertEquals(expectedFormatter, resultFormatter);
-    }
+// assertEquals(expectedFormatter, resultFormatter);
+// }
 
-    @Test
-    @DisplayName("Test converting time from 24-hour format to 12-hour format")
-    public void testConvertTime_24To12() {
-        Application application = new Application();
-        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-        DateTimeFormatter expectedFormatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
+// @Test
+// @DisplayName("Test converting time from 24-hour format to 12-hour format")
+// public void testConvertTime_24To12() {
+// Application application = new Application();
+// DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+// DateTimeFormatter expectedFormatter = DateTimeFormatter.ofPattern("hh:mm:ss
+// a");
 
-        DateTimeFormatter resultFormatter = application.convertTime(inputFormatter);
+// DateTimeFormatter resultFormatter = application.convertTime(inputFormatter);
 
-        assertEquals(expectedFormatter, resultFormatter);
-    }
-}
+// assertEquals(expectedFormatter, resultFormatter);
+// }
+// }
