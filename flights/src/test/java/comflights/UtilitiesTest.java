@@ -116,6 +116,66 @@ public class UtilitiesTest {
         assertEquals(stringExpected, stringResult);
     }
 
+    @Test
+    public void testReturnFlightsWithNoFlights() {
+        UtilitiesService utilitiesMock = mock(UtilitiesService.class);
+        Utilities utilities = new Utilities(utilitiesMock);
+        List<Flight> flights = new ArrayList<>();
+        Flight flight1 = new Flight(1, "Toronto", "California", "10:00", "12:00",
+                LocalDate.of(2024, 4, 2), LocalDate.of(2024, 4, 3), 200);
+        Flight flight2 = new Flight(2, "California", "London", "10:00", "12:00",
+                LocalDate.of(2024, 4, 2), LocalDate.of(2024, 3, 4), 180);
+        Flight flight3 = new Flight(3, "California", "London", "10:00", "12:00",
+                LocalDate.of(2024, 4, 1), LocalDate.of(2024, 3, 4), 190);
+        Flight flight4 = new Flight(4, "London", "Paris", "10:00", "12:00",
+                LocalDate.of(2024, 5, 3), LocalDate.of(2024, 4, 4), 190);
+        flights.add(flight1);
+        flights.add(flight2);
+        flights.add(flight3);
+        flights.add(flight4);
+
+        List<Flight> expected = new ArrayList<>();
+
+        when(utilitiesMock.getAllFlights()).thenReturn(flights);
+
+        List<Flight> result = utilities.getReturnFlights("Toronto", "Paris", LocalDate.of(2024, 3, 2));
+        String stringExpected = expected.toString();
+        String stringResult = result.toString();
+        assertEquals(stringExpected, stringResult);
+    }
+
+    @Test
+    public void testMultistopFlights() {
+        UtilitiesService utilitiesMock = mock(UtilitiesService.class);
+        Utilities utilities = new Utilities(utilitiesMock);
+        List<Flight> flights = new ArrayList<>();
+        Flight flight1 = new Flight(1, "Toronto", "California", "10:00", "12:00",
+                LocalDate.of(2024, 4, 2), LocalDate.of(2024, 4, 3), 200);
+        Flight flight2 = new Flight(2, "California", "London", "10:00", "12:00",
+                LocalDate.of(2024, 4, 2), LocalDate.of(2024, 3, 4), 180);
+        Flight flight3 = new Flight(3, "California", "London", "10:00", "12:00",
+                LocalDate.of(2024, 4, 1), LocalDate.of(2024, 3, 4), 190);
+        Flight flight4 = new Flight(4, "London", "Paris", "10:00", "12:00",
+                LocalDate.of(2024, 5, 3), LocalDate.of(2024, 4, 4), 190);
+        Flight flight5 = new Flight(5, "California", "Paris", "10:00", "12:00",
+                LocalDate.of(2024, 4, 4), LocalDate.of(2024, 4, 5), 200);
+        flights.add(flight1);
+        flights.add(flight2);
+        flights.add(flight3);
+        flights.add(flight4);
+        flights.add(flight5);
+
+        List<Flight> expected = new ArrayList<>();
+        expected.add(flight5);
+
+        when(utilitiesMock.getAllFlights()).thenReturn(flights);
+
+        List<Flight> result = utilities.getMultistopFlights("Toronto", "Paris", LocalDate.of(2024, 4, 3));
+        String stringExpected = expected.toString();
+        String stringResult = result.toString();
+        assertEquals(stringExpected, stringResult);
+    }
+
     // @Test
     // public void testGetDirectFlights() {
     // // Arrange

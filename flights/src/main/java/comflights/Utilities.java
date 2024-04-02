@@ -1,6 +1,9 @@
 package comflights;
 
 import java.util.List;
+
+import ch.qos.logback.core.net.SyslogOutputStream;
+
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.time.LocalDate;
@@ -28,12 +31,15 @@ public class Utilities implements UtilitiesService {
                 LocalDate.of(2024, 4, 1), LocalDate.of(2024, 4, 4), 190);
         Flight flight4 = new Flight(4, "London", "Paris", "10:00", "12:00",
                 LocalDate.of(2024, 5, 3), LocalDate.of(2024, 4, 4), 190);
+        Flight flight5 = new Flight(5, "California", "Paris", "10:00", "12:00",
+                LocalDate.of(2024, 4, 3), LocalDate.of(2024, 4, 5), 200);
 
         // Add flights to the flights list
         flights.add(flight1);
         flights.add(flight2);
         flights.add(flight3);
         flights.add(flight4);
+        flights.add(flight5);
         // returns all flights that are available, defined here
 
         return flights;
@@ -62,7 +68,6 @@ public class Utilities implements UtilitiesService {
         List<Flight> flights = getAllFlights();
 
         for (Flight flight : flights) {
-            System.out.println(flight.getDepartDay());
 
             if (flight.getDepartLocation().equals(destination) && flight.getDestinationLocation().equals(departure)
                     && flight.getDepartDay().isAfter(day)) {
@@ -74,8 +79,8 @@ public class Utilities implements UtilitiesService {
     }
 
     @Override
-    public List<Flight> getMultistopFlights(String old_destination, String new_destination,
-            LocalDate departing_day) {
+    public List<Flight> getMultistopFlights(String oldDestination, String newDestination,
+            LocalDate stopDay) {
         // this list will hold all the flights that are multistop from old_destination
         // to new_destination
         List<Flight> multistopFlights = new ArrayList<>();
@@ -86,12 +91,16 @@ public class Utilities implements UtilitiesService {
         // go through every single flight and find one that goes from "old_destionation"
         // to "new_destination", and departs after the given departing day
         for (Flight flight : flights) {
-            if (flight.getDepartLocation().equals(old_destination) &&
-                    flight.getDestinationLocation().equals(new_destination) &&
-                    flight.getDepartDay().isAfter(departing_day)) {
+            if (flight.getDepartLocation().equals(oldDestination)
+                    && flight.getDestinationLocation().equals(newDestination)
+                    && flight.getDepartDay().isAfter(stopDay)) {
+
+                System.out.println("ADDED");
                 multistopFlights.add(flight);
             }
         }
+
+        System.out.println(multistopFlights);
 
         return multistopFlights;
     }
