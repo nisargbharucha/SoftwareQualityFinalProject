@@ -3,6 +3,7 @@ package comflights;
 import java.util.List;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.time.LocalDate;
 
 // CLASS FOR ALL METHODS TO USE TO GET INFORMATION FROM DATABASE
 public class Utilities {
@@ -13,12 +14,12 @@ public class Utilities {
 
     public List<Flight> getAllFlights() {
         List<Flight> flights = new ArrayList<>();
-        // Flight flight1 = new Flight(1, "Toronto", "California", "12:00", "Monday",
-        // 200);
-        // Flight flight2 = new Flight(2, "California", "London", "12:00", "Tuesday",
-        // 180);
-        // Flight flight3 = new Flight(3, "Paris", "Toronto", "12:00", "Wednesday",
-        // 150);
+        Flight flight1 = new Flight(1, "Toronto", "California", "10:00", "12:00", LocalDate.of(2024, 4, 2),
+                LocalDate.of(2024, 4, 3), 200);
+        Flight flight2 = new Flight(2, "California", "London", "10:00", "12:00", LocalDate.of(2024, 4, 2),
+                LocalDate.of(2024, 4, 4), 180);
+        Flight flight3 = new Flight(3, "California", "London", "10:00", "12:00", LocalDate.of(2024, 4, 1),
+                LocalDate.of(2024, 4, 4), 190);
 
         // // Add flights to the flights list
         // flights.add(flight1);
@@ -35,37 +36,27 @@ public class Utilities {
         List<Flight> flights = getAllFlights();
 
         for (Flight flight : flights) {
-            if (flight.getDepartLocation().equals(departure) &&
-                    flight.getDestinationLocation().equals(destination) &&
-                    /* Check for direct flight indicator in the data model */
-                    flight.isDirect()) { // Replace with your logic to identify direct flights based on your data model
+            if (flight.getDepartLocation().equals(departure) && flight.getDestinationLocation().equals(destination)) {
                 directFlights.add(flight);
             }
+        }
+
+        if (directFlights.isEmpty()) {
+            System.out.println("Sorry, there are no direct flights from " + departure + " to " + destination + ".");
+            return null;
         }
 
         return directFlights;
     }
 
-    public List<Flight> getReturnFlights(String departure, String destination, DateTimeFormatter day) {
+    public List<Flight> getReturnFlights(String departure, String destination, LocalDate day) {
         List<Flight> returnFlights = new ArrayList<>();
 
-        // Simulate a flights database (replace with actual data source)
-        List<Flight> flights = new ArrayList<>();
-        // ... populate flights list with sample flight data
-        // Create sample flights
-        Flight flight1 = new Flight("Departure1", "Destination1", true, LocalDateTime.now());
-        Flight flight2 = new Flight("Departure2", "Destination2", true, LocalDateTime.now());
-        Flight flight3 = new Flight("Departure3", "Destination3", true, LocalDateTime.now());
-
-        // Add flights to the flights list
-        flights.add(flight1);
-        flights.add(flight2);
-        flights.add(flight3);
+        List<Flight> flights = getAllFlights();
 
         for (Flight flight : flights) {
-            if (flight.getDepartLocation().equals(destination) &&
-                    flight.getDestinationLocation().equals(departure) &&
-                    flight.getDepartDay().isAfter(day)) {
+            if (flight.getDepartLocation().equals(destination) && flight.getDestinationLocation().equals(departure)
+                    && flight.getDepartDay().isAfter(day)) {
                 returnFlights.add(flight);
             }
         }
@@ -74,11 +65,16 @@ public class Utilities {
     }
 
     public List<Flight> getMultistopFlights(String old_destination, String new_destination,
-            DateTimeFormatter departing_day) {
+            LocalDate departing_day) {
+        // this list will hold all the flights that are multistop from old_destination
+        // to new_destination
         List<Flight> multistopFlights = new ArrayList<>();
 
-        List<Flight> flights = new ArrayList<>();
+        // this list will hold every single available flight
+        List<Flight> flights = getAllFlights();
 
+        // go through every single flight and find one that goes from "old_destionation"
+        // to "new_destination", and departs after the given departing day
         for (Flight flight : flights) {
             if (flight.getDepartLocation().equals(old_destination) &&
                     flight.getDestinationLocation().equals(new_destination) &&

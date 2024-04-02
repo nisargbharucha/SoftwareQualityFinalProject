@@ -1,4 +1,4 @@
-package test.java.com.flights;
+package comflights;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
-import com.flights.Flight;
-import com.flights.Utilities;
+import comflights.Flight;
+import comflights.Utilities;
 
 /**
  * This class contains unit tests for the Utilities class.
@@ -18,7 +18,7 @@ import com.flights.Utilities;
 public class UtilitiesTest {
 
     private Utilities utilities;
-    
+
     /**
      * Sets up the test fixture by creating an instance of the Utilities class.
      */
@@ -27,10 +27,16 @@ public class UtilitiesTest {
         utilities = new Utilities();
     }
 
+    public void testDirectFlights() {
+        Utilities utilitiesMock = mock(Utilities.class);
+
+    }
+
     /**
      * Test case for the getDirectFlights method.
      * 
-     * It verifies that the getDirectFlights method returns the expected list of flights
+     * It verifies that the getDirectFlights method returns the expected list of
+     * flights
      * when given a departure and destination.
      */
     @Test
@@ -51,7 +57,8 @@ public class UtilitiesTest {
     /**
      * Test case for the getReturnFlights method.
      * 
-     * It verifies that the getReturnFlights method returns the expected list of flights
+     * It verifies that the getReturnFlights method returns the expected list of
+     * flights
      * when given a departure, destination, and date.
      */
     @Test
@@ -74,7 +81,8 @@ public class UtilitiesTest {
     /**
      * Test case for the getMultistopFlights method.
      * 
-     * It verifies that the getMultistopFlights method returns the expected list of flights
+     * It verifies that the getMultistopFlights method returns the expected list of
+     * flights
      * when given an old destination, new destination, and departing day.
      */
     @Test
@@ -96,7 +104,8 @@ public class UtilitiesTest {
     /**
      * Test case for the sendConfirmation method.
      * 
-     * It verifies that the sendConfirmation method calls the getFlightInformation method
+     * It verifies that the sendConfirmation method calls the getFlightInformation
+     * method
      * on the flight object.
      */
     @Test

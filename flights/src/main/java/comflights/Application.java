@@ -1,7 +1,6 @@
 package comflights;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import org.springframework.boot.SpringApplication;
 import java.time.format.DateTimeFormatter;
 
 @SpringBootApplication
@@ -15,5 +14,4 @@ public class Application {
         // return DateTimeFormatter.ofPattern("HH:mm:ss");
     }
 
-    
 }

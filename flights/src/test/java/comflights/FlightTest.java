@@ -12,7 +12,6 @@ import static org.mockito.Mockito.*;
 /**
  * Unit tests for the Flight class.
  */
-@ExtendWith(MockitoExtension.class)
 public class FlightTest {
 
     @Mock

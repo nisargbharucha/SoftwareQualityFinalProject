@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 public class Flight {
     private int flightID;
@@ -12,12 +13,12 @@ public class Flight {
     private String destinationLocation;
     private String departTime;
     private String destinationTime;
-    private String departDay;
-    private String destinationDay;
+    private LocalDate departDay;
+    private LocalDate destinationDay;
     private int numPassengers;
 
     public Flight(int flight_id, String departLocation, String destinationLocation, String departTime,
-            String destinationDay, int numPassengers) {
+            String destinationTime, LocalDate departDay, LocalDate destinationDay, int numPassengers) {
         this.flightID = flight_id;
         this.departLocation = departLocation;
         this.destinationLocation = destinationLocation;
@@ -70,11 +71,11 @@ public class Flight {
         return destinationTime;
     }
 
-    public String getDepartDay() {
+    public LocalDate getDepartDay() {
         return departDay;
     }
 
-    public String getDestinationDay() {
+    public LocalDate getDestinationDay() {
         return destinationDay;
     }
 
