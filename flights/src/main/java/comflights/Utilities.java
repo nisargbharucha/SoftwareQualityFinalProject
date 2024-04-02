@@ -21,21 +21,20 @@ public class Utilities implements UtilitiesService {
     public List<Flight> getAllFlights() {
         List<Flight> flights = new ArrayList<>();
         Flight flight1 = new Flight(1, "Toronto", "California", "10:00", "12:00",
-                LocalDate.of(2024, 4, 2),
-                LocalDate.of(2024, 4, 3), 200);
+                LocalDate.of(2024, 4, 2), LocalDate.of(2024, 4, 3), 200);
         Flight flight2 = new Flight(2, "California", "London", "10:00", "12:00",
-                LocalDate.of(2024, 4, 2),
-                LocalDate.of(2024, 4, 4), 180);
+                LocalDate.of(2024, 4, 2), LocalDate.of(2024, 4, 4), 180);
         Flight flight3 = new Flight(3, "California", "London", "10:00", "12:00",
-                LocalDate.of(2024, 4, 1),
-                LocalDate.of(2024, 4, 4), 190);
+                LocalDate.of(2024, 4, 1), LocalDate.of(2024, 4, 4), 190);
+        Flight flight4 = new Flight(4, "London", "Paris", "10:00", "12:00",
+                LocalDate.of(2024, 5, 3), LocalDate.of(2024, 4, 4), 190);
 
         // Add flights to the flights list
         flights.add(flight1);
         flights.add(flight2);
         flights.add(flight3);
+        flights.add(flight4);
         // returns all flights that are available, defined here
-        System.out.println(flights);
 
         return flights;
     }
@@ -53,12 +52,6 @@ public class Utilities implements UtilitiesService {
             }
         }
 
-        // if (directFlights.isEmpty()) {
-        // System.out.println("Sorry, there are no direct flights from " + departure + "
-        // to " + destination + ".");
-        // return null;
-        // }
-
         return directFlights;
     }
 
@@ -69,6 +62,8 @@ public class Utilities implements UtilitiesService {
         List<Flight> flights = getAllFlights();
 
         for (Flight flight : flights) {
+            System.out.println(flight.getDepartDay());
+
             if (flight.getDepartLocation().equals(destination) && flight.getDestinationLocation().equals(departure)
                     && flight.getDepartDay().isAfter(day)) {
                 returnFlights.add(flight);

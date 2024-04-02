@@ -1,10 +1,5 @@
 package comflights;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class Flight {
@@ -22,6 +17,7 @@ public class Flight {
         this.flightID = flight_id;
         this.departLocation = departLocation;
         this.destinationLocation = destinationLocation;
+        this.departDay = departDay;
         this.departTime = departTime;
         this.destinationDay = destinationDay;
         this.numPassengers = numPassengers;

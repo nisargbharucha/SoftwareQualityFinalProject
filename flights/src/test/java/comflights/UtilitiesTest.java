@@ -69,16 +69,19 @@ public class UtilitiesTest {
                 LocalDate.of(2024, 4, 2), LocalDate.of(2024, 4, 4), 180);
         Flight flight3 = new Flight(3, "California", "London", "10:00", "12:00",
                 LocalDate.of(2024, 4, 1), LocalDate.of(2024, 4, 4), 190);
+        Flight flight4 = new Flight(4, "London", "Paris", "10:00", "12:00",
+                LocalDate.of(2024, 5, 3), LocalDate.of(2024, 4, 4), 190);
         flights.add(flight1);
         flights.add(flight2);
         flights.add(flight3);
+        flights.add(flight4);
 
         List<Flight> expected = new ArrayList<>();
 
         // whent his method is run, then return this list of all flights (defined above)
         when(utilitiesMock.getAllFlights()).thenReturn(flights);
 
-        List<Flight> result = utilities.getDirectFlights("London", "Paris");
+        List<Flight> result = utilities.getDirectFlights("London", "California");
         String stringExpected = expected.toString();
         String stringResult = result.toString();
         assertEquals(stringExpected, stringResult);
@@ -95,17 +98,19 @@ public class UtilitiesTest {
                 LocalDate.of(2024, 4, 2), LocalDate.of(2024, 3, 4), 180);
         Flight flight3 = new Flight(3, "California", "London", "10:00", "12:00",
                 LocalDate.of(2024, 4, 1), LocalDate.of(2024, 3, 4), 190);
+        Flight flight4 = new Flight(4, "London", "Paris", "10:00", "12:00",
+                LocalDate.of(2024, 5, 3), LocalDate.of(2024, 4, 4), 190);
         flights.add(flight1);
         flights.add(flight2);
         flights.add(flight3);
+        flights.add(flight4);
 
         List<Flight> expected = new ArrayList<>();
-        expected.add(flight2);
-        expected.add(flight3);
+        expected.add(flight4);
 
         when(utilitiesMock.getAllFlights()).thenReturn(flights);
 
-        List<Flight> result = utilities.getReturnFlights("California", "London", LocalDate.of(2024, 4, 2));
+        List<Flight> result = utilities.getReturnFlights("Paris", "London", LocalDate.of(2024, 3, 2));
         String stringExpected = expected.toString();
         String stringResult = result.toString();
         assertEquals(stringExpected, stringResult);
