@@ -4,7 +4,7 @@
 |--------------------|---------------------------------------------------|:--|
 | Nisarg Bharucha    | Making initial development plan , Creating diagrams for the class designs and data flow                   | 25 |
 | Shiv Patel         | Configuring Google Cloud and Jenkins for CI/CD      | 25 |
-| Hamzi Farhat       | Configuring test designs from 1st report | 25 |
+| Hamzi Farhat       | Configuring test designs and class diagrams | 25 |
 | Fernando Chan Qui  | Making modules and functions from the test cases in 1st report | 25 |
 
 
