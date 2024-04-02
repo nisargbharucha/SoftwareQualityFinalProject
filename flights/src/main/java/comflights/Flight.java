@@ -17,6 +17,7 @@ public class Flight {
         this.flightID = flight_id;
         this.departLocation = departLocation;
         this.destinationLocation = destinationLocation;
+        this.destinationTime = destinationTime;
         this.departDay = departDay;
         this.departTime = departTime;
         this.destinationDay = destinationDay;
