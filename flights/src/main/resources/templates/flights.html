@@ -40,6 +40,12 @@
         
         <form action="/received-flight-data" method="POST">
             <div class="form-group">
+                <label class="form-label" for="Name">Passenger name</label>
+                <input type="text" class="form-input" id="Name" placeholder="Enter passenger name">
+              
+            </div>
+
+            <div class="form-group">
                 <label class="form-label" for="flight-type">Flight Type:</label>
                 <select class="form-select" id="flight-type">
                     <option value="direct">Direct</option>
@@ -74,11 +80,28 @@
             </div>
             <div class="form-group">
                 <label class="form-label" for="departure-date">Departure Date:</label>
-                <input type="text" class="form-input" id="departure-date" placeholder="Select departure date">
+                <input type="date" class="form-input" id="departure-date" placeholder="Select departure date">
             </div>
             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Book Flight</button>
         </form>
     </div>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form');
+    
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent form submission
+    
+                // Gather form data
+                const formData = new FormData(form);
+    
+                // Construct query string from form data
+                const queryString = new URLSearchParams(formData).toString();
+    
+                // Redirect to another page with form data appended to URL
+                window.location.href = 'ticket.html?' + queryString;
+            });
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flight Ticket</title>
+  <style>
+    .ticket-container {
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 20px;
+      width: 600px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    .airline-logo {
+      flex: 1;
+      text-align: center;
+    }
+    
+    .passenger-info,
+    .flight-details {
+      flex: 2;
+      margin: 10px;
+    }
+    
+    .barcode {
+      flex: 1;
+      text-align: right;
+    }
+    
+    img {
+      width: 100px;
+    }
+    
+    h2 {
+      margin-bottom: 5px;
+    }
+    
+    p {
+      margin-bottom: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="ticket-container">
+    <div class="airline-logo">
+      <img src="airline.png" alt="Airline Logo">
+    </div>
+    <div class="passenger-info">
+      <h2>Passenger</h2>
+      <p>Name: Michael Lee</p>
+      <p>Confirmation Number: 123456</p>
+    </div>
+    <div class="flight-details">
+      <h2>Flight Details</h2>
+      <p>From: Toronto (YYZ)</p>
+      <p>To: Panama City (PTY)</p>
+      <p>Departure: 2024-04-23 @ 23:00</p>
+      <p>Arrival: 2024-04-23 @ 06:00 </p>
+      <p>Fligth type: Direct</p>
+      <p>Trip type: One-Way</p>
+
+    </div>
+    <div class="barcode">
+      <svg width="100" height="50">
+        <rect x="0" y="0" width="100" height="50" fill="#000" />
+      </svg>
+    </div>
+  </div>
+<!-- Script to receive the content from fligths.html goes here -->
+</body>
+</html>
+
