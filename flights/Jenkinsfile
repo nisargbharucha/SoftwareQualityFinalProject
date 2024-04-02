@@ -12,7 +12,8 @@ pipeline {
     }
     stage ('test') {
       steps {
-        sh 'mvn clean test -f ./flights/pom.xml'
+        // sh 'mvn clean test -f ./flights/pom.xml'
+        sh 'mvn clean package'
       }
     }
     stage ('build') {
@@ -22,7 +23,7 @@ pipeline {
     }
     stage ('Deploy') {
       steps {
-        sh 'echo "bye bye"'
+        sh 'echo "Deployed"'
       }
     }
   }
