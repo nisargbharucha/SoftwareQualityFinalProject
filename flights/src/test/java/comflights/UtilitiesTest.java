@@ -1,13 +1,13 @@
 package comflights;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertArrayEquals;
+// import static org.junit.Assert.assertArrayEquals;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+// import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+// import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Before;
@@ -170,7 +170,38 @@ public class UtilitiesTest {
 
         when(utilitiesMock.getAllFlights()).thenReturn(flights);
 
-        List<Flight> result = utilities.getMultistopFlights("Toronto", "Paris", LocalDate.of(2024, 4, 3));
+        List<Flight> result = utilities.getMultistopFlights("California", "Paris", LocalDate.of(2024, 4, 2));
+        String stringExpected = expected.toString();
+        String stringResult = result.toString();
+        assertEquals(stringExpected, stringResult);
+    }
+
+    @Test
+    public void testMultistopFlightsWithNoFlights() {
+        UtilitiesService utilitiesMock = mock(UtilitiesService.class);
+        Utilities utilities = new Utilities(utilitiesMock);
+        List<Flight> flights = new ArrayList<>();
+        Flight flight1 = new Flight(1, "Toronto", "California", "10:00", "12:00",
+                LocalDate.of(2024, 4, 2), LocalDate.of(2024, 4, 3), 200);
+        Flight flight2 = new Flight(2, "California", "London", "10:00", "12:00",
+                LocalDate.of(2024, 4, 2), LocalDate.of(2024, 3, 4), 180);
+        Flight flight3 = new Flight(3, "California", "London", "10:00", "12:00",
+                LocalDate.of(2024, 4, 1), LocalDate.of(2024, 3, 4), 190);
+        Flight flight4 = new Flight(4, "London", "Paris", "10:00", "12:00",
+                LocalDate.of(2024, 5, 3), LocalDate.of(2024, 4, 4), 190);
+        Flight flight5 = new Flight(5, "California", "Paris", "10:00", "12:00",
+                LocalDate.of(2024, 4, 4), LocalDate.of(2024, 4, 5), 200);
+        flights.add(flight1);
+        flights.add(flight2);
+        flights.add(flight3);
+        flights.add(flight4);
+        flights.add(flight5);
+
+        List<Flight> expected = new ArrayList<>();
+
+        when(utilitiesMock.getAllFlights()).thenReturn(flights);
+
+        List<Flight> result = utilities.getMultistopFlights("London", "Paris", LocalDate.of(2024, 5, 4));
         String stringExpected = expected.toString();
         String stringResult = result.toString();
         assertEquals(stringExpected, stringResult);

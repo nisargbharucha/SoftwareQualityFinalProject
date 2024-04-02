@@ -32,8 +32,7 @@ public class Utilities implements UtilitiesService {
         Flight flight4 = new Flight(4, "London", "Paris", "10:00", "12:00",
                 LocalDate.of(2024, 5, 3), LocalDate.of(2024, 4, 4), 190);
         Flight flight5 = new Flight(5, "California", "Paris", "10:00", "12:00",
-                LocalDate.of(2024, 4, 3), LocalDate.of(2024, 4, 5), 200);
-
+                LocalDate.of(2024, 4, 4), LocalDate.of(2024, 4, 5), 200);
         // Add flights to the flights list
         flights.add(flight1);
         flights.add(flight2);
@@ -91,6 +90,8 @@ public class Utilities implements UtilitiesService {
         // go through every single flight and find one that goes from "old_destionation"
         // to "new_destination", and departs after the given departing day
         for (Flight flight : flights) {
+            System.out.println(flight.getDepartLocation() + " " + flight.getDestinationLocation() + " "
+                    + flight.getDepartDay() + " " + stopDay);
             if (flight.getDepartLocation().equals(oldDestination)
                     && flight.getDestinationLocation().equals(newDestination)
                     && flight.getDepartDay().isAfter(stopDay)) {
