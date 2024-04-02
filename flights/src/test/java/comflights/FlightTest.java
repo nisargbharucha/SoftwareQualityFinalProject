@@ -27,6 +27,12 @@ public class FlightTest {
     Flight flight5 = new Flight(5, "California", "Paris", "10:00", "12:00",
             LocalDate.of(2024, 4, 4), LocalDate.of(2024, 4, 5), 200);
 
+    
+    /**
+     * Test case for the Flight constructor
+     * Verifies that the values given by the constructor are working correctly, as well as the getter functions in the 
+     * @return true if every every variable is correct
+     */
     @Test
     public void testFlightConstructorWithValidID() {
         assertEquals("Toronto", flight.getDepartLocation());
@@ -38,7 +44,11 @@ public class FlightTest {
         assertEquals(200, flight.getNumPassengers());
     }
 
-
+    /**
+     * Test case for the Flight toString method
+     * Verifies the toString method works and does not have a null return value
+     * @return true if every every variable is correct
+     */
     @Test
     public void testFlightToString() {
         Flight flight = new Flight(1, "Toronto", "New York", "10:00", "12:00",
@@ -50,6 +60,11 @@ public class FlightTest {
 
     }
 
+    /**
+     * Test case for the Flight getDepartLocation method
+     * Verifies that the depart location is returned correctly
+     * @return true if the output matches that of the method
+     */
     @Test
     public void testGetDepartLocation(){
         assertEquals("Toronto", flight.getDepartLocation());
@@ -102,6 +117,34 @@ public class FlightTest {
         assertNotNull(user.toString());
     }
 
+    /**
+     * Test case for the getDirectFlights method when there is a valid flight
+     * 
+     * @return true if the output matches that of the method
+     */
+    @Test
+    public void testDirectFlights() {
+        List<Flight> flights = new ArrayList<>();
+        flights.add(flight1);
+        flights.add(flight2);
+        flights.add(flight3);
+        flights.add(flight4);
+        List<Flight> expected = new ArrayList<>();
+        expected.add(flight1);
+
+        // whent his method is run, then return this list of all flights (defined above)
+        when(utilitiesMock.getAllFlights()).thenReturn(flights);
+
+        List<Flight> result = utilities.getDirectFlights("Toronto", "California");
+        String stringExpected = expected.toString();
+        String stringResult = result.toString();
+        assertEquals(stringExpected, stringResult);
+    }
+
+    /**
+     * Test case for the getDirectFlights method when there are no valid flights
+     * @return true if the output (empty list) matches the one given by 'getDirectFlights()'
+     */
     @Test
     public void testDirectFlightsWithNoFlights() {
         List<Flight> flights = new ArrayList<>();
@@ -120,6 +163,10 @@ public class FlightTest {
         assertEquals(stringExpected, stringResult);
     }
 
+    /**
+     * Test case for the getReturnFlights method when there is a valid flight
+     * @return true if the output matches that of the method
+     */
     @Test
     public void testReturnFlights() {
         List<Flight> flights = new ArrayList<>();
@@ -138,7 +185,11 @@ public class FlightTest {
         String stringResult = result.toString();
         assertEquals(stringExpected, stringResult);
     }
-
+    
+    /**
+     * Test case for the getReturnFlights method when there is no valid flight
+     * @return true if the output matches that of the method
+     */
     @Test
     public void testReturnFlightsWithNoFlights() {
         List<Flight> flights = new ArrayList<>();
@@ -156,7 +207,11 @@ public class FlightTest {
         String stringResult = result.toString();
         assertEquals(stringExpected, stringResult);
     }
-
+    
+    /**
+     * Test case for the getMultistopFlights method when there is a valid flight
+     * @return true if the output matches that of the method
+     */
     @Test
     public void testMultistopFlights() {
         Utilities utilities = new Utilities(utilitiesMock);
@@ -178,6 +233,10 @@ public class FlightTest {
         assertEquals(stringExpected, stringResult);
     }
 
+    /**
+     * Test case for the getMultistopFlights method when there is no valid flights
+     * @return true if the output matches that of the method
+     */
     @Test
     public void testMultistopFlightsWithNoFlights() {
         Utilities utilities = new Utilities(utilitiesMock);
