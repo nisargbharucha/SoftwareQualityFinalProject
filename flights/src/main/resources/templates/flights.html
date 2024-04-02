@@ -38,7 +38,7 @@
     <div class="container">
         <h1 class="text-2xl font-bold mb-4">Flights</h1>
         
-        <form>
+        <form action="/received-flight-data" method="POST">
             <div class="form-group">
                 <label class="form-label" for="flight-type">Flight Type:</label>
                 <select class="form-select" id="flight-type">
@@ -72,7 +72,10 @@
                 <label class="form-label" for="to-destination">To:</label>
                 <input type="text" class="form-input" id="to-destination" placeholder="Enter the arrival destination">
             </div>
-            
+            <div class="form-group">
+                <label class="form-label" for="departure-date">Departure Date:</label>
+                <input type="text" class="form-input" id="departure-date" placeholder="Select departure date">
+            </div>
             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Book Flight</button>
         </form>
     </div>
