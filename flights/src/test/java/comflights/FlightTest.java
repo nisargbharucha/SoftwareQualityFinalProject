@@ -1,19 +1,11 @@
 package comflights;
-
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
 import java.time.LocalDate;
-import java.sql.*;
-
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
 
-
-// /**
-// * Unit tests for the Flight class.
-// */
+/**
+/* Unit tests for the Flight class.
+**/
 public class FlightTest {
     Flight flight = new Flight(1, "Toronto", "New York", "10:00", "12:00",
             LocalDate.of(2024, 4, 2), LocalDate.of(2024, 4, 3), 200);
